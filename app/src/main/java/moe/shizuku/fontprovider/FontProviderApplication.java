@@ -3,10 +3,6 @@ package moe.shizuku.fontprovider;
 import android.app.Application;
 import android.content.Context;
 
-import com.crashlytics.android.Crashlytics;
-import com.crashlytics.android.core.CrashlyticsCore;
-
-import io.fabric.sdk.android.Fabric;
 import moe.shizuku.fontprovider.font.FontManager;
 
 /**
@@ -23,12 +19,6 @@ public class FontProviderApplication extends Application {
         }
 
         sInitialized = true;
-
-        Crashlytics crashlyticsKit = new Crashlytics.Builder()
-                .core(new CrashlyticsCore.Builder().disabled(BuildConfig.DEBUG).build())
-                .build();
-
-        Fabric.with(context, crashlyticsKit);
 
         FontProviderSettings.init(context);
         FontManager.init(context);
